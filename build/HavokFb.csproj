@@ -1,0 +1,32 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <!-- Builds the FrostyHavokPlugin library + the HavokFb command line in one exe, against the Frosty v2 SDK
+       (wannkunstbeikor/FrostyToolsuite) it was written for. The original HavokFb/HavokFb.csproj points at a project path
+       that does not exist in this repository. Expects FrostyToolsuite cloned next to this repository (see BUILDING.md). -->
+  <PropertyGroup>
+    <OutputType>Exe</OutputType>
+    <TargetFramework>net8.0</TargetFramework>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>enable</Nullable>
+    <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
+    <LangVersion>latest</LangVersion>
+    <AssemblyName>HavokFb</AssemblyName>
+    <RootNamespace>HavokFb</RootNamespace>
+    <EnableDefaultCompileItems>false</EnableDefaultCompileItems>
+    <NoWarn>$(NoWarn);CS8600;CS8601;CS8602;CS8603;CS8604;CS8618;CS8625;CS0168;CS0219;CS0414</NoWarn>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Compile Include="..\FrostyHavokPlugin\**\*.cs" Exclude="..\**\obj\**;..\**\bin\**" />
+    <Compile Include="..\HavokFb\**\*.cs" Exclude="..\**\obj\**;..\**\bin\**" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="OpenTK.Mathematics" Version="4.8.2" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\..\FrostyToolsuite\FrostySdk\FrostySdk.csproj" />
+  </ItemGroup>
+
+</Project>
